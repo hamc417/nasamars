@@ -4,6 +4,7 @@ import { Photos } from "../../pages/home/interface";
 
 export const useNasa = () => {
   const [dataMars, setDataMars] = useState<Photos>();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     fetch(
@@ -24,5 +25,9 @@ export const useNasa = () => {
       });
   }, []);
 
-  return { dataMars };
+  useEffect(() => {
+    if (dataMars) setIsLoading(false);
+  }, [dataMars]);
+
+  return { dataMars, isLoading };
 };
