@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { IImageContainer } from "./interface";
-import "./styles.scss";
+//import "./styles.scss";
 
 const ImageContainer = ({ img_src, alt, link, data }: IImageContainer) => {
   const navigate = useNavigate();
