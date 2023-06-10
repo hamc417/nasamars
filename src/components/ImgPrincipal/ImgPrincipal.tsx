@@ -5,7 +5,7 @@ import { IimgPrincipal } from "./interface";
 export const ImgPrincipal = ({ src, alt }: IimgPrincipal) => {
 
   return (
-    <div className="image-container">
+    <div className="image-main">
       <img src={src} alt={alt} />
 
     </div>

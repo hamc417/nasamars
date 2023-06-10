@@ -1,14 +1,15 @@
+import { na } from "../../utils/constants"
 import { IDatelist } from "./interface"
 
 
-const Datelist = ({shortName, name, date, id} : IDatelist )=>{
+const Datelist = ({shortName = na, name = na, date = na, id} : IDatelist )=>{
     return(
         <div>
             <ul>
-                <li>Camera Shortname:  {shortName ? shortName :'NA'}</li>
-                <li>Camera Name: {name ? name:"NA"}</li>
-                <li>Date: {date ? date:"NA"}</li>
-                <li>ID: {id ? id:"NA"}</li>
+                <li>Camera Shortname:  {shortName}</li>
+                <li>Camera Name: {name}</li>
+                <li>Date: {date}</li>
+                <li>ID: {id}</li>
             </ul>
         </div>
     )
