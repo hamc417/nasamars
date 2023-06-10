@@ -1,6 +1,6 @@
 import { ImageContainer } from "../../components/ImageContainer";
 import { SkeletonComponent } from "../../components/Skeleton";
-import { Title } from "../../components/Title";
+
 import { useNasa } from "../../network/hooks/useNasa";
 import "./styles.scss";
 
@@ -9,7 +9,6 @@ const Home = () => {
 
   return (
     <section>
-      <Title link="/details" sectionName="home" />
       {isLoading ? (
         <SkeletonComponent />
       ) : (

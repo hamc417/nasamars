@@ -1,4 +1,4 @@
-export interface IimgPrincipal {
+export interface IImgPrincipal {
   src: string;
   alt: string;
 }

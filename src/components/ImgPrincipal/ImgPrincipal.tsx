@@ -1,16 +1,9 @@
+import { IImgPrincipal } from "./interface";
 
-import { IimgPrincipal } from "./interface";
-//import "./styles.scss";
-
-export const ImgPrincipal = ({ src, alt }: IimgPrincipal) => {
-
+export const ImgPrincipal = ({ src, alt }: IImgPrincipal) => {
   return (
-    <div className="image-main">
+    <div>
       <img src={src} alt={alt} />
-
     </div>
-  
-  )
-}
-
-//export default ImgPrincipal;
+  );
+};
