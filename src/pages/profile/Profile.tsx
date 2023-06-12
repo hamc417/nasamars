@@ -1,89 +1,74 @@
-import { TextField, Grid, Box } from "@mui/material";
-import { useForm } from "react-hook-form";
-import {CustomizedTables} from '../../components/TableUser'
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { Box, TextField } from '@mui/material';
+import {TableData} from '../../components/TableUser';
+import { IFormData } from './interface';
+
+
 
 const Profile = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
     reset,
-  } = useForm();
+  } = useForm<IFormData>();
 
-  const onSubmit = (data: any) => {
-    const Data = data;
-    {reset()}
-  console.log(Data) 
-  console.log(Data.lastname) };
+  const [data, setData] = useState<IFormData[]>([]);
 
-  const Datalist = [
-    {
-      nombre: "Data.name",
-      Apellido: "Data.lastname",
-      Direccion: "Data.address"
-
-    }
-  ]
-
-
-
-
-  console.log(watch("name")); // watch input value by passing the name of it
-  
+  const onSubmit = (formData: IFormData) => {
+    setData((prevData: IFormData[]) => [...prevData, formData]);
+    reset();
+  };
 
   return (
     <>
-    {/* "handleSubmit" will validate your inputs before invoking "onSubmit" */}
-    <form onSubmit={handleSubmit(onSubmit)}>
-
       
-      {/* register your input into the hook by invoking the "register" function */}
      
-      <Box
-        sx={{
-          display: 'flex',
-          alignItems: 'flex-center',
-          flexDirection: 'column',
-          p: 3,
-          m: 3,
-          gap: 2,
-          width: 500,
+
+        <form onSubmit={handleSubmit(onSubmit)}>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'flex-center',
+            flexDirection: 'column',
+            textAlign: 'center',
+            p: 3,
+            m: 2,
+            gap: 2,
+            width: 500,
+                       
+          }}
+        >
+          <h1>Formulario</h1>
+          <TextField
+            id="outlined-required"
+            label="Nombre"
+            placeholder="Ingrese nombre"
+            {...register('name', { required: true })}
+          />
+          {errors.name && <span>This name field is required</span>}
+          <TextField
+            id="outlined-required"
+            label="Apellido"
+            placeholder="Ingrese Apellido"
+            {...register('lastname', { required: true })}
+          />
+          {errors.lastname && <span>This lastname field is required</span>}
+
+          <TextField id="outlined-required" label="Direccion" placeholder="Ingrese direccion" {...register('address')} />
+
+          <input type="submit" value="Agregar" />
+        </Box>
         
-        }}
-      >
+      </form>
+     
 
-      <TextField
-        id="outlined-required"
-        label="Nombre"
-        placeholder="Ingrese nombre"
-        {...register("name", { required: true })}
-      />
-      {errors.name && <span>This name field is required</span>}
-      <TextField
-        id="outlined-required"
-        label="Apellido"
-        placeholder="Ingrese Apellido"
-        {...register("lastname", { required: true })}
-      />
-      {errors.lastname && <span>This lastname field is required</span>}
-
-      <TextField
-        id="outlined-required"
-        label="Direccion"
-        placeholder="Ingrese direccion"
-        {...register("address")}
-      />
+          <h2>Personas</h2>
       
-      <input type="submit" value="Agregar" max-width={2} />
 
-      </Box>
-   
-   
-    </form>
-
-<CustomizedTables/> 
-</>
+      <TableData data={data} />
+    </>
   );
 };
 

@@ -1,8 +1,10 @@
-export interface ITableUser {
-    name: string,
-    lastname: string,
-    address: string,
-    cellphone: number,
-    data: Object;
-    
+    interface ITableUser {
+    name: string;
+    lastname: string;
+    address?: string;
+      
 }
+
+export interface ITableDataProps {
+    data: ITableUser[];
+  }

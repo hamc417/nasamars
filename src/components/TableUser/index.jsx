@@ -1,3 +1,3 @@
-import CustomizedTables from './TablerUser'
+import TableData from './TablerUser'
 
-export {CustomizedTables}
+export {TableData}
