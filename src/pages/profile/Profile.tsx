@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Box, TextField } from '@mui/material';
 import {TableData} from '../../components/TableUser';
 import { IFormData } from './interface';
+import "./styles.scss"
 
 
 
@@ -23,9 +24,7 @@ const Profile = () => {
 
   return (
     <>
-      
-     
-
+        <div className='profile'>
         <form onSubmit={handleSubmit(onSubmit)}>
         <Box
           sx={{
@@ -34,7 +33,7 @@ const Profile = () => {
             flexDirection: 'column',
             textAlign: 'center',
             p: 3,
-            m: 2,
+            m: 0,
             gap: 2,
             width: 500,
                        
@@ -68,6 +67,7 @@ const Profile = () => {
       
 
       <TableData data={data} />
+      </div>
     </>
   );
 };
